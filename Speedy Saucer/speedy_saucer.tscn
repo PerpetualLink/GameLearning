@@ -1,0 +1,56 @@
+[gd_scene load_steps=7 format=3 uid="uid://khscbjs0yn5p"]
+
+[ext_resource type="Script" path="res://Speedy Saucer/speedy_saucer.gd" id="1_vu3tu"]
+[ext_resource type="Texture2D" uid="uid://cul82816ksxbm" path="res://Speedy Saucer/Purple.png" id="1_w1woj"]
+[ext_resource type="PackedScene" uid="uid://rqcnab8w40d2" path="res://Speedy Saucer/player.tscn" id="2_pqupl"]
+[ext_resource type="PackedScene" uid="uid://d32frx31atm0l" path="res://Speedy Saucer/maze.tscn" id="4_fatmj"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xs8r7"]
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_wit8d"]
+font_size = 32
+
+[node name="speedy Saucer" type="Node2D"]
+script = ExtResource("1_vu3tu")
+
+[node name="Graphics" type="Node" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Graphics"]
+layer = -1
+
+[node name="TextureRect" type="TextureRect" parent="Graphics/CanvasLayer"]
+z_index = -100
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_w1woj")
+
+[node name="Start" type="Label" parent="Graphics"]
+offset_left = 499.0
+offset_top = -2.0
+offset_right = 576.0
+offset_bottom = 43.0
+rotation = 0.0023509
+text = "Start"
+label_settings = SubResource("LabelSettings_xs8r7")
+
+[node name="End" type="Label" parent="Graphics"]
+offset_left = 411.0
+offset_top = 296.0
+offset_right = 469.0
+offset_bottom = 341.0
+text = "End
+"
+label_settings = SubResource("LabelSettings_wit8d")
+
+[node name="Player" parent="." instance=ExtResource("2_pqupl")]
+position = Vector2(543, 85)
+
+[node name="Maze" parent="." instance=ExtResource("4_fatmj")]
+z_index = -2
+position = Vector2(823, 280)
+
+[connection signal="body_exited" from="Maze" to="." method="_on_maze_body_exited"]

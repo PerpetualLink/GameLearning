@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://khscbjs0yn5p"]
+
+[ext_resource type="Script" path="res://speedy_saucer.gd" id="1_vu3tu"]
+[ext_resource type="Texture2D" uid="uid://cul82816ksxbm" path="res://Purple.png" id="1_w1woj"]
+[ext_resource type="PackedScene" uid="uid://rqcnab8w40d2" path="res://player.tscn" id="2_pqupl"]
+[ext_resource type="PackedScene" uid="uid://d32frx31atm0l" path="res://maze.tscn" id="4_fatmj"]
+
+[node name="speedy Saucer" type="Node2D"]
+script = ExtResource("1_vu3tu")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+z_index = -100
+offset_left = -270.0
+offset_top = -227.0
+offset_right = 1418.0
+offset_bottom = 871.0
+texture = ExtResource("1_w1woj")
+
+[node name="Player" parent="." instance=ExtResource("2_pqupl")]
+position = Vector2(543, 85)
+
+[node name="Maze" parent="." instance=ExtResource("4_fatmj")]
+z_index = -2
+position = Vector2(823, 280)
+
+[connection signal="body_exited" from="Maze" to="." method="_on_maze_body_exited"]
