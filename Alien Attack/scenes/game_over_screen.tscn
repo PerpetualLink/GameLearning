@@ -1,0 +1,92 @@
+[gd_scene load_steps=5 format=3 uid="uid://bdk85jdpmh01h"]
+
+[ext_resource type="Script" path="res://Alien Attack/scripts/game_over_screen.gd" id="1_khusd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3rogx"]
+bg_color = Color(0.764706, 0.372549, 0.313726, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
+[sub_resource type="LabelSettings" id="LabelSettings_0jgqv"]
+font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_viraf"]
+font_size = 36
+font_color = Color(0.647059, 0.956863, 0.886275, 1)
+
+[node name="Game Over Screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_khusd")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -311.0
+offset_top = -194.0
+offset_right = 311.0
+offset_bottom = 194.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_3rogx")
+
+[node name="Game Over" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -153.0
+offset_top = -150.0
+offset_right = 194.0
+offset_bottom = -62.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Game Over"
+label_settings = SubResource("LabelSettings_0jgqv")
+
+[node name="Score" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -88.0
+offset_top = -69.0
+offset_right = 112.0
+offset_bottom = -19.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Score: 9999"
+label_settings = SubResource("LabelSettings_viraf")
+
+[node name="Retry Button" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -101.0
+offset_top = 3.0
+offset_right = 104.0
+offset_bottom = 72.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 44
+text = "Retry
+"
+
+[connection signal="pressed" from="Panel/Retry Button" to="." method="_on_retry_button_pressed"]

@@ -1,0 +1,65 @@
+[gd_scene load_steps=6 format=3 uid="uid://1n1rg8eigqc5"]
+
+[ext_resource type="Script" path="res://Alien Attack/scripts/hud.gd" id="1_02ux4"]
+[ext_resource type="FontFile" uid="uid://bnm2tcrtd4bhr" path="res://Alien Attack/assets/font/Kenney Blocks.ttf" id="1_cdqly"]
+[ext_resource type="Texture2D" uid="uid://bjyut63vhetol" path="res://Alien Attack/assets/textures/orb.png" id="3_776bc"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_iedua"]
+font = ExtResource("1_cdqly")
+font_size = 48
+
+[sub_resource type="LabelSettings" id="LabelSettings_oxwiq"]
+font = ExtResource("1_cdqly")
+font_size = 32
+
+[node name="Hud" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_02ux4")
+
+[node name="score" type="Label" parent="."]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 4.0
+offset_right = 378.0
+offset_bottom = 76.0
+text = "Score: 9999"
+label_settings = SubResource("LabelSettings_iedua")
+
+[node name="LifeTextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 171.0
+offset_top = 65.0
+offset_right = 297.0
+offset_bottom = 183.0
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("3_776bc")
+
+[node name="LifeTextureRect2" type="TextureRect" parent="."]
+offset_left = 242.0
+offset_top = 67.0
+offset_right = 368.0
+offset_bottom = 185.0
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("3_776bc")
+
+[node name="LifeTextureRect3" type="TextureRect" parent="."]
+offset_left = 305.0
+offset_top = 66.0
+offset_right = 431.0
+offset_bottom = 184.0
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("3_776bc")
+
+[node name="Lives" type="Label" parent="."]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 71.0
+offset_right = 167.0
+offset_bottom = 119.0
+text = "Lives:"
+label_settings = SubResource("LabelSettings_oxwiq")

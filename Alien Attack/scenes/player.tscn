@@ -1,0 +1,66 @@
+[gd_scene load_steps=9 format=3 uid="uid://407h54dy7afh"]
+
+[ext_resource type="Script" path="res://Alien Attack/scripts/player.gd" id="1_b2q4u"]
+[ext_resource type="Texture2D" uid="uid://dv6ls2pblyctl" path="res://Alien Attack/assets/textures/player_ship.png" id="2_651es"]
+[ext_resource type="AudioStream" uid="uid://b3odv14abxkqg" path="res://Alien Attack/assets/audio/sfx_laser2.wav" id="3_eaqug"]
+
+[sub_resource type="Gradient" id="Gradient_4neh0"]
+offsets = PackedFloat32Array(0.010989, 0.516484, 1)
+colors = PackedColorArray(0.809059, 0.646676, 0.0216896, 0, 0.740898, 0.307659, 0.200025, 1, 0.936822, 0.24486, 0.369883, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_hy7pu"]
+gradient = SubResource("Gradient_4neh0")
+
+[sub_resource type="Curve" id="Curve_ytsis"]
+_data = [Vector2(0, 0.516483), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_22lym"]
+curve = SubResource("Curve_ytsis")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4mu4a"]
+lifetime_randomness = 0.3
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 3, 1)
+spread = 30.0
+initial_velocity_min = -200.0
+initial_velocity_max = -200.0
+gravity = Vector3(0, 0, 0)
+scale_min = 2.0
+scale_max = 15.0
+scale_curve = SubResource("CurveTexture_22lym")
+color_ramp = SubResource("GradientTexture1D_hy7pu")
+
+[node name="Player" type="CharacterBody2D"]
+position = Vector2(64, 81)
+collision_mask = 2
+motion_mode = 1
+script = ExtResource("1_b2q4u")
+
+[node name="Flame" type="GPUParticles2D" parent="."]
+position = Vector2(-27, 34)
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_4mu4a")
+lifetime = 0.3
+
+[node name="Flame2" type="GPUParticles2D" parent="."]
+position = Vector2(-25, -34)
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_4mu4a")
+lifetime = 0.3
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_651es")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+rotation = 1.5708
+scale = Vector2(0.2, 0.2)
+polygon = PackedVector2Array(-121, -149, -161, -143, -207, -118, -265, -53, -237, 22, -195, 41, -168, 118, -94, 76, -54, 108, 2, 183, 59, 112, 97, 74, 137, 92, 167, 122, 206, 37, 243, 11, 267, -49, 193, -119, 119, -150, 46, -188, -56, -187)
+
+[node name="Rocket Container" type="Node" parent="."]
+
+[node name="Rocket Shot" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_eaqug")

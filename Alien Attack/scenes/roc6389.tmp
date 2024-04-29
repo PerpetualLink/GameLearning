@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://ucytpi5jjoc0"]
+
+[ext_resource type="Script" path="res://Alien Attack/scripts/rocket.gd" id="1_ncg1t"]
+[ext_resource type="Texture2D" uid="uid://b3xuy1v1yvt7p" path="res://Alien Attack/assets/textures/rocket.png" id="2_be774"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xvboh"]
+radius = 24.95
+height = 124.64
+
+[node name="Rocket" type="Area2D"]
+scale = Vector2(0.2, 0.2)
+script = ExtResource("1_ncg1t")
+
+[node name="Rocket" type="Sprite2D" parent="."]
+texture = ExtResource("2_be774")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_xvboh")
