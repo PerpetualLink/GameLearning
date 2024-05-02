@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://mpqont2q0h8x"]
+
+[ext_resource type="PackedScene" uid="uid://cql2bj3kmbanx" path="res://Martian Mike/scenes/hud.tscn" id="1_0rwlo"]
+[ext_resource type="Script" path="res://Martian Mike/scripts/ui_layer.gd" id="1_107ai"]
+[ext_resource type="PackedScene" uid="uid://c117d2medmo5e" path="res://Martian Mike/scenes/win_screen.tscn" id="2_vtg6u"]
+
+[node name="UILayer" type="CanvasLayer"]
+script = ExtResource("1_107ai")
+
+[node name="Timer" parent="." instance=ExtResource("1_0rwlo")]
+
+[node name="Win Screen" parent="." instance=ExtResource("2_vtg6u")]
+visible = false

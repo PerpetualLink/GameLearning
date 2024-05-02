@@ -1,0 +1,57 @@
+[gd_scene load_steps=6 format=3 uid="uid://dm6w6sa2fi054"]
+
+[ext_resource type="Script" path="res://Martian Mike/scripts/startscreen.gd" id="1_4ak13"]
+[ext_resource type="PackedScene" uid="uid://dpcy2wxsdjchg" path="res://Martian Mike/scenes/bg.tscn" id="1_4udxm"]
+[ext_resource type="FontFile" uid="uid://twt8qe00mtn8" path="res://Martian Mike/assets/fonts/Kenney Pixel Square.ttf" id="2_8ilth"]
+[ext_resource type="PackedScene" uid="uid://7cbmxq1x467q" path="res://Martian Mike/scenes/level_1.tscn" id="2_hrpr6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_mew54"]
+font_size = 32
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4ak13")
+startLocation = ExtResource("2_hrpr6")
+
+[node name="title" type="Label" parent="."]
+layout_mode = 0
+offset_left = 61.0
+offset_top = 40.0
+offset_right = 458.0
+offset_bottom = 91.0
+theme_override_fonts/font = ExtResource("2_8ilth")
+text = "Simple Platformer"
+label_settings = SubResource("LabelSettings_mew54")
+
+[node name="Start" type="Button" parent="."]
+layout_mode = 0
+offset_left = 166.0
+offset_top = 100.0
+offset_right = 317.0
+offset_bottom = 161.0
+theme_override_fonts/font = ExtResource("2_8ilth")
+theme_override_font_sizes/font_size = 28
+text = "START"
+
+[node name="Quit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 204.0
+offset_top = 177.0
+offset_right = 281.0
+offset_bottom = 219.0
+theme_override_fonts/font = ExtResource("2_8ilth")
+theme_override_font_sizes/font_size = 20
+text = "QUIT"
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("1_4udxm")]
+scrollSpeed = 30
+
+[connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

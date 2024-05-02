@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cgmf74xsh2l3v"]
+
+[ext_resource type="Texture2D" uid="uid://d1cq35dy67t8m" path="res://Martian Mike/assets/textures/bg/Brown.png" id="1_auwji"]
+[ext_resource type="Script" path="res://Martian Mike/scripts/waterfall.gd" id="1_dhd2b"]
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+script = ExtResource("1_dhd2b")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(64, 64)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer"]
+modulate = Color(0.172549, 0.454902, 1, 1)
+texture_repeat = 2
+texture = ExtResource("1_auwji")
+region_enabled = true
+region_rect = Rect2(0, 0, 128, 256)
